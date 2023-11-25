@@ -8,4 +8,4 @@
 ### ?townhall #CLANTAG or ?th #CLANTAG to view clan details and stats
 
 ### Requires an API Key from Clash Of Clans API official website
-### Rum with "yarn dev"
+### Run bot with "yarn dev"
