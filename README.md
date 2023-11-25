@@ -7,5 +7,6 @@
 ### ?members #CLANTAG to view clan members and tags
 ### ?townhall #CLANTAG or ?th #CLANTAG to view clan details and stats
 
+## Instructions:
 ### Requires an API Key from Clash Of Clans API official website
 ### Run bot with "yarn dev"
