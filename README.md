@@ -9,4 +9,5 @@
 
 ## Instructions:
 ### Requires an API Key from Clash Of Clans API official website
+### Install packages
 ### Run bot with "yarn dev"
