@@ -1,6 +1,19 @@
 const { isEmpty } = require('../utility');
 
 module.exports = async (clash, parameters, command, prefix) => {
+    function formatDate(date) {
+
+        var year = date.substring(0,4);
+        var month = date.substring(4,6);
+        var day = date.substring(6,8);
+        var hour = date.substring(9,11);
+        var minutes = date.substring(11,13);
+
+        let formattedDate = day + `/` + month + `/` + year + ` ` + hour + `:` + minutes;
+
+        return formattedDate;
+      }      
+      
     if (isEmpty(parameters))
     return `For command _${command}_, you need to provide a tag, i.e: _${prefix}war #V2UJU28_`;
 
@@ -24,9 +37,14 @@ module.exports = async (clash, parameters, command, prefix) => {
 
         return (
             `🏰 *${clanResponse.clan.name} 🆚 ${clanResponse.opponent.name}*\n\n` +
-
+            
             `⚔ *Attacks:* ${clanResponse.clan.attacks} 🆚 ${clanResponse.opponent.attacks}\n` +
-            `⭐ *Stars:* ${clanResponse.clan.stars} 🆚 ${clanResponse.opponent.stars}\n\n` +
+            `⭐ *Stars:* ${clanResponse.clan.stars} 🆚 ${clanResponse.opponent.stars}\n` +
+            (
+                clanResponse.state === `warEnded`
+                ? `${clanResponse.clan.stars > clanResponse.opponent.stars ? `🟢` : clanResponse.opponent.stars > clanResponse.clan.stars ? `🔴` : `⚫`} *Result:* ${clanResponse.clan.stars > clanResponse.opponent.stars ? `VICTORY` : clanResponse.opponent.stars > clanResponse.clan.stars ? `DEFEAT` : `DRAW`}\n\n`
+                : `⏳ *War ends in:* ${formatDate(clanResponse.endTime)}\n\n`
+            ) +
 
             `📃 *War Log:*\n` +
             `${clanMembers}\n`
